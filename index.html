@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>MDT MCD</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0c1424;
+    color: #fff;
+  }
+
+  /* Barre latérale */
+  .sidebar {
+    width: 250px;
+    height: 100vh;
+    background: #101b33;
+    padding-top: 20px;
+    position: fixed;
+    overflow-y: auto;
+  }
+
+  .logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto 25px auto;
+    background: url('image.png') center/cover no-repeat;
+  }
+
+  .menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .menu-item {
+    cursor: pointer;
+    padding: 12px 20px;
+    font-weight: bold;
+    background: #101b33;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.2s;
+  }
+
+  .menu-item:hover {
+    background: #1a2744;
+  }
+
+  /* Flèche */
+  .arrow {
+    transition: transform 0.25s;
+    font-size: 14px;
+  }
+
+  .arrow.open {
+    transform: rotate(90deg);
+  }
+
+  .submenu {
+    display: none;
+    background: #0f1a33;
+  }
+
+  .submenu li {
+    padding: 10px 40px;
+    font-weight: normal;
+    cursor: pointer;
+  }
+
+  .submenu li:hover {
+    background: #1e2d4a;
+  }
+
+  /* Contenu */
+  .content {
+    margin-left: 250px;
+    padding: 30px;
+  }
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="logo"></div>
+
+  <ul class="menu">
+    <li class="menu-item">
+      Général
+      <span class="arrow">▶</span>
+    </li>
+    <ul class="submenu">
+      <li>Accueil</li>
+      <li>Citoyens</li>
+      <li>Effectifs</li>
+      <li>Pôles / spécialités</li>
+    </ul>
+
+    <li class="menu-item">
+      Registres
+      <span class="arrow">▶</span>
+    </li>
+    <ul class="submenu">
+      <li>Registre des plaintes</li>
+      <li>Registre des armes</li>
+      <li>Registre des délits</li>
+      <li>Registre des bracelets</li>
+      <li>Registre des sabots</li>
+    </ul>
+
+    <li class="menu-item">
+      Rapports
+      <span class="arrow">▶</span>
+    </li>
+    <ul class="submenu">
+      <li>Rapport d’intervention</li>
+      <li>Rapport d’accident</li>
+    </ul>
+
+    <li class="menu-item">
+      Preuves
+      <span class="arrow">▶</span>
+    </li>
+    <ul class="submenu">
+      <li>Photos / preuves</li>
+    </ul>
+  </ul>
+</div>
+
+<div class="content">
+  <h1>MDT MCD</h1>
+  <p></p>
+</div>
+
+<script>
+  document.querySelectorAll('.menu-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const next = item.nextElementSibling;
+      const arrow = item.querySelector('.arrow');
+      if (next && next.classList.contains('submenu')) {
+        const isOpen = next.style.display === 'block';
+        next.style.display = isOpen ? 'none' : 'block';
+        if (arrow) {
+          arrow.classList.toggle('open', !isOpen);
+        }
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
